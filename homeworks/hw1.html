@@ -1,1 +1,30 @@
+<HTML>
+<BODY>
+<canvas id='hw1' width='300' height='300' style="border:1px solid">
+</canvas>
+<script>
+
+
+var canvas = document.getElementById('hw1');
+	var ctx = canvas.getContext('2d');
+	
+	var x = 0;
+	var direction = 1;
+
+
+	setInterval( function () 
+		{
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.fillStyle = "#102c54";	
+			ctx.fillRect(50+x, 50, 100, 100);
+			x += direction;
+		}, 10);
+
+
+</script>
+</BODY>
+</HTML>
+
+
+
 
