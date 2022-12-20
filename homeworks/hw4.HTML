@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--suppress CheckEmptyScriptTag -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"/>
+    <script>
+        let canvas = document.getElementById("canvas");
+        let context = canvas.getContext("2d");
+
+        let R = 100;
+		let x0 = 150;
+		let y0 = 150;
+        let x = 0;
+        let y = R;
+        let F = 2 * (1 - R);
+		let shift = true;
+        while (y > 0) {
+            context.fillRect(x + x0, y + y0, 1, 1);
+			context.fillRect(x + x0, -1 * y + y0, 1, 1);
+			context.fillRect(-1 * x + x0, y + y0, 1, 1);
+			context.fillRect(-1 * x + x0, -1 * y + y0, 1, 1);
+            if (F < 0) {
+				if ((2 * (F + y) - 1) <= 0) {
+					x++;
+					F += 2 * x + 1;
+					shift = false;
+				}
+            } else if (F > 0) {
+				if ((2 * (F - x) - 1) > 0) {
+					y--;
+					F += 1 - 2 * y;
+					shift = false;
+				}
+            }
+			if (shift) {
+				x++;
+				y--;
+				F += 2*(x - y - 1);
+			}
+			shift = true;
+        }
+    </script>
+</body>
+</html>
